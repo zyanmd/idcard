@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🪪 Digital ID Card IMPHNEN</h1>
+        
+        <div class="form-container">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Full Name" value="Takashi Yamada">
+            </div>
+            
+            <div class="input-group">
+                <label for="username">ID Number</label>
+                <input type="text" id="username" placeholder="ID Number" value="3578112509950001">
+            </div>
+            
+            <div class="input-group">
+                <label for="playing">Address</label>
+                <input type="text" id="playing" placeholder="Address" value="Jl. Merdeka No. 17, Jakarta">
+            </div>
+            
+            <div class="input-group">
+                <label for="maritalStatus">Marital Status</label>
+                <select id="maritalStatus">
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="employmentStatus">Employment Status</label>
+                <select id="employmentStatus">
+                    <option value="Employed">Employed</option>
+                    <option value="Self-Employed">Self-Employed</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Student">Student</option>
+                    <option value="Retired">Retired</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="religion">Religion</label>
+                <select id="religion">
+                    <option value="Islam">Islam</option>
+                    <option value="Christianity">Christianity</option>
+                    <option value="Catholicism">Catholicism</option>
+                    <option value="Hinduism">Hinduism</option>
+                    <option value="Buddhism">Buddhism</option>
+                    <option value="Confucianism">Confucianism</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="hobby">Hobby/Interest</label>
+                <input type="text" id="hobby" placeholder="Hobby" value="Photography">
+            </div>
+            
+            <div class="input-group file-input">
+                <label for="avatarUpload">Photo</label>
+                <input type="file" id="avatarUpload" accept="image/*">
+            </div>
+            
+            <div class="input-group signature-pad">
+                <label>Signature</label>
+                <div class="signature-container">
+                    <canvas id="signatureCanvas" width="320" height="150"></canvas>
+                    <button id="clearSignature" type="button">Clear</button>
+                </div>
+            </div>
+            
+            <button id="generateBtn">Generate ID Card</button>
+        </div>
+
+        <div class="card-container">
+            <canvas id="profileCanvas" width="800" height="500"></canvas>
+            <button id="downloadBtn" style="display: none;">Download ID Card</button>
+        </div>
+
+        <div class="footer">
+            For entertainment purposes only | Not a legal identification document
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
