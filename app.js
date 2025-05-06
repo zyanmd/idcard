@@ -1,4 +1,4 @@
-import { ProfileCardGenerator } from 'ProfileCardGenerator.js';
+import { ProfileCardGenerator } from '/ProfileCardGenerator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const cardGenerator = new ProfileCardGenerator('profileCanvas');
