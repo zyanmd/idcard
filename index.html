@@ -5,90 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ID Card Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <p>Creating your ID card...</p>
+    </div>
+
     <div class="container">
-        <h1>🪪 Digital ID Card IMPHNEN</h1>
+        <header class="app-header">
+            <h1><i class="fas fa-id-card"></i> Digital ID Card Generator</h1>
+            <p class="subtitle">Create professional-looking ID cards in seconds</p>
+        </header>
         
         <div class="form-container">
-            <div class="input-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" placeholder="Full Name" value="Takashi Yamada">
-            </div>
-            
-            <div class="input-group">
-                <label for="username">ID Number</label>
-                <input type="text" id="username" placeholder="ID Number" value="3578112509950001">
-            </div>
-            
-            <div class="input-group">
-                <label for="playing">Address</label>
-                <input type="text" id="playing" placeholder="Address" value="Jl. Merdeka No. 17, Jakarta">
-            </div>
-            
-            <div class="input-group">
-                <label for="maritalStatus">Marital Status</label>
-                <select id="maritalStatus">
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                    <option value="Divorced">Divorced</option>
-                    <option value="Widowed">Widowed</option>
-                </select>
-            </div>
-            
-            <div class="input-group">
-                <label for="employmentStatus">Employment Status</label>
-                <select id="employmentStatus">
-                    <option value="Employed">Employed</option>
-                    <option value="Self-Employed">Self-Employed</option>
-                    <option value="Unemployed">Unemployed</option>
-                    <option value="Student">Student</option>
-                    <option value="Retired">Retired</option>
-                </select>
-            </div>
-            
-            <div class="input-group">
-                <label for="religion">Religion</label>
-                <select id="religion">
-                    <option value="Islam">Islam</option>
-                    <option value="Christianity">Christianity</option>
-                    <option value="Catholicism">Catholicism</option>
-                    <option value="Hinduism">Hinduism</option>
-                    <option value="Buddhism">Buddhism</option>
-                    <option value="Confucianism">Confucianism</option>
-                    <option value="Others">Others</option>
-                </select>
-            </div>
-            
-            <div class="input-group">
-                <label for="hobby">Hobby/Interest</label>
-                <input type="text" id="hobby" placeholder="Hobby" value="Photography">
-            </div>
-            
-            <div class="input-group file-input">
-                <label for="avatarUpload">Photo</label>
-                <input type="file" id="avatarUpload" accept="image/*">
-            </div>
-            
-            <div class="input-group signature-pad">
-                <label>Signature</label>
-                <div class="signature-container">
-                    <canvas id="signatureCanvas" width="320" height="150"></canvas>
-                    <button id="clearSignature" type="button">Clear</button>
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                
+                <div class="input-group">
+                    <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="name" placeholder="Full Name" value="Takashi Yamada">
+                </div>
+                
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-fingerprint"></i> ID Number</label>
+                    <input type="text" id="username" placeholder="ID Number" value="3578112509950001">
+                </div>
+                
+                <div class="input-group">
+                    <label for="playing"><i class="fas fa-map-marker-alt"></i> Address</label>
+                    <input type="text" id="playing" placeholder="Address" value="Jl. Merdeka No. 17, Jakarta">
+                </div>
+                
+                <div class="input-group">
+                    <label for="religion"><i class="fas fa-pray"></i> Religion</label>
+                    <select id="religion">
+                        <option value="Islam">Islam</option>
+                        <option value="Christianity">Christianity</option>
+                        <option value="Catholicism">Catholicism</option>
+                        <option value="Hinduism">Hinduism</option>
+                        <option value="Buddhism">Buddhism</option>
+                        <option value="Confucianism">Confucianism</option>
+                        <option value="Others">Others</option>
+                    </select>
                 </div>
             </div>
             
-            <button id="generateBtn">Generate ID Card</button>
+            <div class="form-section">
+                <h2>Additional Details</h2>
+                
+                <div class="input-group">
+                    <label for="maritalStatus"><i class="fas fa-heart"></i> Marital Status</label>
+                    <select id="maritalStatus">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="employmentStatus"><i class="fas fa-briefcase"></i> Employment Status</label>
+                    <select id="employmentStatus">
+                        <option value="Employed">Employed</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Student">Student</option>
+                        <option value="Retired">Retired</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hobby"><i class="fas fa-star"></i> Hobby/Interest</label>
+                    <input type="text" id="hobby" placeholder="Hobby" value="Photography">
+                </div>
+                
+                <div class="input-group file-input">
+                    <label for="avatarUpload"><i class="fas fa-camera"></i> Photo</label>
+                    <div class="file-upload-wrapper">
+                        <button type="button" class="file-upload-btn">Choose File</button>
+                        <span class="file-name">No file chosen</span>
+                        <input type="file" id="avatarUpload" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section full-width">
+                <h2><i class="fas fa-signature"></i> Signature</h2>
+                <div class="signature-container">
+                    <canvas id="signatureCanvas" width="320" height="150"></canvas>
+                    <button id="clearSignature" type="button">Clear Signature</button>
+                </div>
+                <p class="signature-instructions">Draw your signature using your mouse or finger</p>
+            </div>
+            
+            <div class="form-section full-width">
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic"></i> Generate ID Card
+                </button>
+            </div>
         </div>
 
         <div class="card-container">
-            <canvas id="profileCanvas" width="800" height="500"></canvas>
-            <button id="downloadBtn" style="display: none;">Download ID Card</button>
+            <div class="card-preview-title">
+                <h2><i class="fas fa-eye"></i> ID Card Preview</h2>
+            </div>
+            <div class="card-preview">
+                <canvas id="profileCanvas" width="800" height="500"></canvas>
+            </div>
+            <div class="card-actions">
+                <button id="downloadBtn" style="display: none;">
+                    <i class="fas fa-download"></i> Download ID Card
+                </button>
+                <button id="resetBtn">
+                    <i class="fas fa-redo"></i> Reset Form
+                </button>
+            </div>
         </div>
 
-        <div class="footer">
-            For entertainment purposes only | Not a legal identification document
-        </div>
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p>For entertainment purposes only | Not a legal identification document</p>
+                <div class="social-links">
+                    <a href="https://github.com/zyanmd" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i> zyanmd
+                    </a>
+                </div>
+            </div>
+            <div class="wave-container">
+                <div class="wave wave1"></div>
+                <div class="wave wave2"></div>
+                <div class="wave wave3"></div>
+                <div class="wave wave4"></div>
+            </div>
+        </footer>
     </div>
 
     <script type="module" src="app.js"></script>
